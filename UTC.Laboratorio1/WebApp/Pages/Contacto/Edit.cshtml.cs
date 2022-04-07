@@ -21,11 +21,11 @@ namespace WebApp.Pages.Contacto
             this.proveedorService = proveedorService;
         }
 
-
         [BindProperty(SupportsGet = true)]
         public int? id { get; set; }
 
         [BindProperty]
+        [FromBody]
         public ContactoEntity Entity { get; set; } = new ContactoEntity();
 
         public IEnumerable<ProveedorEntity> ProveedorLista { get; set; } = new List<ProveedorEntity>();
@@ -72,6 +72,7 @@ namespace WebApp.Pages.Contacto
                      result = await contactoService.Create(Entity);
                                        
                 }
+
 
                 return new JsonResult(result);
             }
