@@ -3,11 +3,17 @@ var App;
 (function (App) {
     var AxiosProvider;
     (function (AxiosProvider) {
-        AxiosProvider.ContactoEliminar = function (id) { return axios.delete("Contacto/Grid?handler=Eliminar&id=" + id).then(function (_a) {
+        //export const ContactoEliminar = (id) => axios.delete<DBEntity>("Contacto/Grid?handler=Eliminar&id=" + id).then(({ data }) => data);
+        //export const ContactoGuardar= (entity) => axios.post<DBEntity>("Contacto/Edit", entity).then(({ data }) => data);
+        AxiosProvider.ContactoEliminar = function (id) { return ServiceApi.delete("api/Contacto/" + id).then(function (_a) {
             var data = _a.data;
             return data;
         }); };
-        AxiosProvider.ContactoGuardar = function (entity) { return axios.post("Contacto/Edit", entity).then(function (_a) {
+        AxiosProvider.ContactoGuardar = function (entity) { return ServiceApi.post("apiContacto", entity).then(function (_a) {
+            var data = _a.data;
+            return data;
+        }); };
+        AxiosProvider.ContactoActualizar = function (entity) { return ServiceApi.put("api/Contacto", entity).then(function (_a) {
             var data = _a.data;
             return data;
         }); };

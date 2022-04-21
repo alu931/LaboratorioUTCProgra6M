@@ -12,13 +12,28 @@
 
             methods: {
 
+                ClienteServicio(entity) {
+                    console.log(entity);
+                    if (entity.IdContacto == null) {
+                        return App.AxiosProvider.ContactoGuardar(entity);
+
+                    } else {
+                        return App.AxiosProvider.ContactoActualizar(entity);
+
+                    }
+                },
+
                 Save() {
+                    
 
                     if (BValidateData(this.Formulario)) {
                         Loading.fire("Guardando...");
 
-                        App.AxiosProvider.ContactoGuardar(this.Entity).then(data => {
+
+                        this.ClienteServicio(this.Entity).then(data => {
                             Loading.close();
+
+                       
 
                             if (data.CodeError == 0) {
 

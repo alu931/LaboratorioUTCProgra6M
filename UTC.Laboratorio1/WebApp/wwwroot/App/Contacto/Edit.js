@@ -8,10 +8,19 @@ var ContactoEdit;
             Entity: Entity
         },
         methods: {
+            ClienteServicio: function (entity) {
+                console.log(entity);
+                if (entity.IdContacto == null) {
+                    return App.AxiosProvider.ContactoGuardar(entity);
+                }
+                else {
+                    return App.AxiosProvider.ContactoActualizar(entity);
+                }
+            },
             Save: function () {
                 if (BValidateData(this.Formulario)) {
                     Loading.fire("Guardando...");
-                    App.AxiosProvider.ContactoGuardar(this.Entity).then(function (data) {
+                    this.ClienteServicio(this.Entity).then(function (data) {
                         Loading.close();
                         if (data.CodeError == 0) {
                             Toast.fire({ title: "El registro se inserto correctamente", icon: "success" })
