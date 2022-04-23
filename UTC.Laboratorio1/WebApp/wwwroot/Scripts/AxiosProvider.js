@@ -9,7 +9,7 @@ var App;
             var data = _a.data;
             return data;
         }); };
-        AxiosProvider.ContactoGuardar = function (entity) { return ServiceApi.post("apiContacto", entity).then(function (_a) {
+        AxiosProvider.ContactoGuardar = function (entity) { return ServiceApi.post("api/Contacto", entity).then(function (_a) {
             var data = _a.data;
             return data;
         }); };
