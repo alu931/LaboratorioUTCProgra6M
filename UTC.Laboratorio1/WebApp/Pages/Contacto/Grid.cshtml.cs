@@ -11,12 +11,22 @@ namespace WebApp.Pages.Contacto
 {
     public class GridModel : PageModel
     {
-        private readonly IContactoService contactoService;
 
-        public GridModel(IContactoService contactoService)
+        private readonly ServiceApi service;
+
+        public GridModel(ServiceApi service)
         {
-            this.contactoService = contactoService;
+            this.service = service;
         }
+
+
+
+        //private readonly IContactoService contactoService;
+
+        //public GridModel(IContactoService contactoService)
+        //{
+        //    this.contactoService = contactoService;
+        //}
 
         public IEnumerable<ContactoEntity> GridList { get; set; } = new List<ContactoEntity>();
 
@@ -24,7 +34,7 @@ namespace WebApp.Pages.Contacto
         {
             try
             {
-                GridList = await contactoService.Get();
+                GridList = await service.ContactoGet();
 
                 return Page();
             }
@@ -35,27 +45,27 @@ namespace WebApp.Pages.Contacto
             }
         }
 
-        public async Task<JsonResult> OnDeleteEliminar(int id)
-        {
-            try
-            {
-                var result = await contactoService.Delete(new()
-                {
-                    IdContacto = id
-                }
-                );
+        //public async Task<JsonResult> OnDeleteEliminar(int id)
+        //{
+        //    try
+        //    {
+        //        var result = await contactoService.Delete(new()
+        //        {
+        //            IdContacto = id
+        //        }
+        //        );
 
-                return new JsonResult(result);
-            }
+        //        return new JsonResult(result);
+        //    }
 
-            catch (Exception ex)
-            {
+        //    catch (Exception ex)
+        //    {
 
-                return new JsonResult(new DBEntity 
+        //        return new JsonResult(new DBEntity 
 
-                { CodeError=ex.HResult, MsgError=ex.Message});
-            }
-        }
+        //        { CodeError=ex.HResult, MsgError=ex.Message});
+        //    }
+        //}
 
 
 
