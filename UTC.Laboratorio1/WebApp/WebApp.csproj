@@ -8,12 +8,16 @@
   <ItemGroup>
     <Content Remove="wwwroot\App\Contacto\Edit.ts" />
     <Content Remove="wwwroot\App\Contacto\Grid.ts" />
+    <Content Remove="wwwroot\App\Login.ts" />
     <Content Remove="wwwroot\App\Proveedor\Edit.ts" />
     <Content Remove="wwwroot\App\Proveedor\Grid.ts" />
+    <Content Remove="wwwroot\App\Registrarse.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -76,8 +80,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="wwwroot\App\Contacto\Edit.ts" />
     <TypeScriptCompile Include="wwwroot\App\Contacto\Grid.ts" />
+    <TypeScriptCompile Include="wwwroot\App\Login.ts" />
     <TypeScriptCompile Include="wwwroot\App\Proveedor\Edit.ts" />
     <TypeScriptCompile Include="wwwroot\App\Proveedor\Grid.ts" />
+    <TypeScriptCompile Include="wwwroot\App\Registrarse.ts" />
     <TypeScriptCompile Include="wwwroot\Assets\%40types\Apexchart\index.d.ts" />
     <TypeScriptCompile Include="wwwroot\Assets\%40types\axios\index.d.ts" />
     <TypeScriptCompile Include="wwwroot\Assets\%40types\bootstrap-validator\bvenums.ts" />

@@ -1,4 +1,6 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor Context;
+@{var UsuarioSession = Context.HttpContext.Session.Get<Entity.UsuarioEntity>(IApp.UsuarioSession); }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -335,7 +337,7 @@
                     <div class="profile-text pt-1 dropdown">
                         <a href="#" class="dropdown-toggle u-dropdown w-100 text-white d-block position-relative" id="dropdownMenuLink"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Usuario
+                            @UsuarioSession?.Nombre
                         </a>
                         <div class="dropdown-menu animated flipInY" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="#">
