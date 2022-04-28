@@ -8,7 +8,13 @@ using System.Threading.Tasks;
 
 namespace WBL
 {
-    public class UsuarioService
+    public interface IUsuarioService
+    {
+        Task<UsuarioEntity> Login(UsuarioEntity entity);
+        Task<DBEntity> Registrar(UsuarioEntity entity);
+    }
+
+    public class UsuarioService : IUsuarioService
     {
 
         private readonly IDataAccess sql;
