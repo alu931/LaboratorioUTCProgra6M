@@ -7,7 +7,7 @@ using WBL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebApplication.Pages
+namespace WebApp.Pages
 {
     public class LoginModel : PageModel
     {
