@@ -11,24 +11,24 @@ namespace WebApp.Pages
 {
     public class RegistrarseModel : PageModel
     {
-        private readonly IUsuariosService usuariosService;
+        private readonly IUsuarioService usuarioService;
 
-        public RegistrarseModel(IUsuariosService usuariosService)
+        public RegistrarseModel(IUsuarioService usuarioService)
         {
 
-            this.usuariosService = usuariosService;
+            this.usuarioService = usuarioService;
         }
 
         [FromBody]
         [BindProperty]
-        public UsuariosEntity Entity { get; set; } = new UsuariosEntity();
+        public UsuarioEntity Entity { get; set; } = new UsuarioEntity();
 
         public async Task<IActionResult> OnPost()
         {
 
             try
             {
-                var result = await usuariosService.Registrar(Entity);
+                var result = await usuarioService.Registrar(Entity);
 
                
                    return new JsonResult(result);

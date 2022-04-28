@@ -12,29 +12,29 @@ namespace WebApp.Pages
     public class LoginModel : PageModel
     {
         
-        private readonly IUsuariosService usuariosService;
+        private readonly IUsuarioService usuarioService;
 
-        public LoginModel(IUsuariosService  usuariosService)
+        public LoginModel(IUsuarioService  usuarioService)
         {
             
-            this.usuariosService = usuariosService;
+            this.usuarioService = usuarioService;
         }
 
         [FromBody]
         [BindProperty]
-        public UsuariosEntity Entity { get; set; } = new UsuariosEntity();
+        public UsuarioEntity Entity { get; set; } = new UsuarioEntity();
 
         public async Task<IActionResult> OnPost()
         {
 
             try
             {
-                var result = await usuariosService.Login(Entity);
+                var result = await usuarioService.Login(Entity);
 
                 if (result.CodeError==0)
                 {
 
-                    HttpContext.Session.Set<UsuariosEntity>(IApp.UsuarioSession, result);
+                    HttpContext.Session.Set<UsuarioEntity>(IApp.UsuarioSession, result);
                     return new JsonResult(result);
                 }
                 else
