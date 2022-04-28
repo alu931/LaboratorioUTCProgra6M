@@ -45,6 +45,8 @@ namespace WBL
 
         }
 
+      
+
         //Metodo GetById
         public async Task<ContactoEntity> GetById(ContactoEntity entity)
         {
@@ -74,6 +76,28 @@ namespace WBL
                     entity.PrimerApellido,
                     entity.SegundoApellido,
                 });
+                return await result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public async Task<DBEntity> CreateExample(ContactoEntity entity)
+        {
+            try
+            {
+                var result = sql.ExecuteMultipleAsync("dbo.ContactoInsertar", new
+                {
+                    entity.Identificacion,
+                    entity.IdProveedor,
+                    entity.Nombre,
+                    entity.PrimerApellido,
+                    entity.SegundoApellido,
+                }, "BD");
                 return await result;
             }
             catch (Exception)

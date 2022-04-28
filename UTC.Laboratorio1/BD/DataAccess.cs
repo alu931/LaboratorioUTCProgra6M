@@ -24,6 +24,11 @@ namespace BD
 
             );
 
+        public SqlConnection DbConnectionMultiple(string ConnID) => new SqlConnection(
+            new SqlConnectionStringBuilder(config.GetConnectionString(ConnID)).ConnectionString
+
+           );
+
         //Representación de retorno de una lista
         public async Task<IEnumerable<T>> QueryAsync<T>(string sp, object Param = null, int? Timeout = null)
         {
@@ -265,5 +270,39 @@ namespace BD
         }
 
 
+        public async Task<DBEntity> ExecuteMultipleAsync(string sp, object Param = null, string ConnID = "Conn", int? Timeout = null)
+        {
+            try
+            {
+                using (var exec = DbConnectionMultiple(ConnID))
+                {
+                    await exec.OpenAsync();
+
+                    var result = await exec.ExecuteReaderAsync(sql: sp, param: Param, commandType: System.Data.CommandType.StoredProcedure, commandTimeout: Timeout);
+
+                    await result.ReadAsync();
+
+                    return new()
+                    {
+                        CodeError = result.GetInt32(0),
+                        MsgError = result.GetString(1)
+
+                    };
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+
     }
+
+
+
+
 }

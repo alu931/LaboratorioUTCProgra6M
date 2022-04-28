@@ -95,7 +95,15 @@ namespace WebApi.Controllers
         {
             try
             {
-                return await contactoService.Delete(new ContactoEntity { IdContacto = id });
+               var result=  await contactoService.Delete(new ContactoEntity { IdContacto = id });
+                result.MsgError = result.CodeError == 547
+                    ? "El registro no se puede eliminar"
+                    :result.CodeError == -1
+                    ? "Mensaje 2"
+                    :result.MsgError;
+
+                return result;
+                    
             }
             catch (Exception ex)
             {

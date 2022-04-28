@@ -13,6 +13,8 @@ var ContactoGrid;
                             return window.location.reload();
                         });
                     }
+                    //else if (data.CodeError == 0) {
+                    //}
                     else {
                         Toast.fire({ title: data.MsgError, icon: "error" });
                     }

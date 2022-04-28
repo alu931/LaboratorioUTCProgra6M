@@ -15,6 +15,9 @@
                             Toast.fire({ title: "El registro se elimino correctamente", icon: "success" }).then(() =>
                                 window.location.reload());
                         }
+                        //else if (data.CodeError == 0) {
+
+                        //}
                         else {
                             Toast.fire({ title: data.MsgError, icon: "error" })
 

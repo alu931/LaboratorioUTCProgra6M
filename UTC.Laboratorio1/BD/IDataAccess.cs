@@ -7,6 +7,7 @@ namespace BD
     public interface IDataAccess
     {
         Task<DBEntity> ExecuteAsync(string sp, object Param = null, int? Timeout = null);
+        Task<DBEntity> ExecuteMultipleAsync(string sp, object Param = null, string ConnID = "Conn", int? Timeout = null);
         Task<IEnumerable<dynamic>> QueryAsync(string sp, object Param = null, int? Timeout = null);
         Task<IEnumerable<T>> QueryAsync<T, B, C, D, E, F, G>(string sp, string split, object Param = null, int? Timeout = null);
         Task<IEnumerable<T>> QueryAsync<T, B, C, D, E, F>(string sp, string split, object Param = null, int? Timeout = null);

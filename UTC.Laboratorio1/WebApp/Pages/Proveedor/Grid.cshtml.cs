@@ -55,6 +55,11 @@ namespace WebApp.Pages.Proveedor
                 }          
                 );
 
+                if (result.CodeError==547)
+                {
+                    throw new Exception("El registro no se puede eliminar, porque esta asociado a un proveedor");
+                }
+
                 if (result.CodeError!=0)
                 {
                     throw new Exception(result.MsgError);

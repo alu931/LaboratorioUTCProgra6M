@@ -8,6 +8,7 @@ SET NOCOUNT ON
     
 	BEGIN TRY
 	 
+	
 	 DELETE FROM dbo.Proveedor WHERE IdProveedor=@IdProveedor
 
 	 COMMIT TRANSACTION TRASA
