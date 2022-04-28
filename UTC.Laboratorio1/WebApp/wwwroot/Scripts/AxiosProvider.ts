@@ -9,8 +9,8 @@ namespace App.AxiosProvider   {
     export const ContactoActualizar = (entity) => ServiceApi.put<DBEntity>("api/Contacto", entity).then(({ data }) => data);
 
 
-    export const Login = (entity) => axios.post<DBEntity>("Login" + entity).then(({ data }) => data);
-    export const UsuarioRegistrar = (entity) => axios.post<DBEntity>("Registrarse" + entity).then(({ data }) => data);
+    export const Login = (entity) => axios.post<DBEntity>("Login", entity).then(({ data }) => data);
+    export const UsuarioRegistrar = (entity) => axios.post<DBEntity>("Registrarse",entity).then(({ data }) => data);
 }
 
 

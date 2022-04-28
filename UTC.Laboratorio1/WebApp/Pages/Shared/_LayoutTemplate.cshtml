@@ -1,5 +1,10 @@
 ﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor Context;
-@{var UsuarioSession = Context.HttpContext.Session.Get<Entity.UsuarioEntity>(IApp.UsuarioSession); }
+@{
+    var UsuarioSession = Context.HttpContext.Session.Get<Entity.UsuarioEntity>(IApp.UsuarioSession);
+  
+     if (string.IsNullOrEmpty(UsuarioSession?.Nombre))
+        Context.HttpContext.Response.Redirect("Login");
+}
 
 <!DOCTYPE html>
 <html lang="en">
